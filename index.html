@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            overflow: hidden;
+            height: 100vh;
+            width: 100%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map">
+
+    </div>
+
+    <script>
+        const berichtjes = ["Raindrops keep falling on my head  inr.ch/NZ7OVJZ (67.4600, 18.1642)  - Peter Thuwis",
+            "Vandaag een rustdag genomen met heeeeeel veeeeeel regen en wind \nAlles is zowat droog nu\nMorgen ist pas voor echt de bergen in 🤪👋🏻 inr.ch/ZGCW3XR (67.4578, 18.1630)  - Peter Thuwis",
+            "Iemand mag eens een mail zenden dat het welletjes is met al dat water, maar kben dus in sarek heee, Mooi hoor hier :-) inr.ch/7FXQ4YZ (67.4010, 17.9368)  - Peter Thuwis",
+            "Dag mama, ik heb vandaag in het water gespeeld, en in de zon, en in de sneeuw en tis hier heel leuk. Liefs, je kapoen.  inr.ch/7U3DGVZ (67.3683, 17.6837)  - Peter Thuwis",
+            "Vandaag was maar een halve dag, maar ik heb toch ook eens onder een zeiltje in een sneeuwstorm gelegen; elke dag een feest 🥳  inr.ch/OEVE3VJ (67.3747, 17.5675)  - Peter Thuwis",
+            "Ik slaap bij God in de kapel vanavond, Hij is toch niet thuis, dat was gisteren naar het schijnt\nEn oh ja, de zon was er ook vandaag\n Tot laterzzz inr.ch/744SFZB (67.3423, 17.2153)  - Peter Thuwis"
+
+
+        ]
+        var map = L.map('map').setView([67.4, 17.5], 9);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        berichtjes.forEach((b, index) => {
+            const data = b.split("inr.ch/")
+            const bericht = index + 1 + ") " + data[0];
+            let coo = data[1].split(" ")
+            let la = coo[1].replace("(", "").replace(",", "").trim()
+            let lo = coo[2].replace(")", "").replace(",", "").trim()
+
+            //console.log(la, lo);
+
+            L.marker([la, lo]).addTo(map)
+                .bindPopup(bericht)
+                .openPopup();
+        })
+    </script>
+</body>
+
+</html>
