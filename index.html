@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="./favicon.ico">
 
     <title>Franky op reis.</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
@@ -15,11 +15,38 @@
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
         integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
         crossorigin=""></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
+        }
+
+        h1 {
+            position: absolute;
+            z-index: 999;
+            /* padding-left: 75px; */
+            padding: 20px 0;
+            text-align: center;
+            pointer-events: none;
+            font-size: 17vw;
+            line-height: 100px;
+            color: #d6edc5;
+            background: white;
+            font-family: 'Cute Font', sans-serif;
+            width: 100%;
+            text-shadow: 2px 4px 3px #aad3df;
+
+        }
+
+        .leaflet-control-container {
+            display: none;
+        }
+
+        @media screen and (min-width: 600px) {
+            h1 {
+                font-size: 60px;
+            }
         }
 
         #map {
@@ -33,6 +60,7 @@
 
 <body>
 
+    <h1>Franky op reis</h1>
     <div id="map">
 
     </div>
